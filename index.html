@@ -14,12 +14,12 @@
     <link rel="preload" href="fonts/The%20Seasons%20Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
     <link rel="preload" href="fonts/Crimson_Pro/static/CrimsonPro-Light.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-    <!-- Preload critical images -->
+    <!-- Preload critical images - prioritize library/column for About section -->
+    <link rel="preload" href="images/library.png" as="image" fetchpriority="high">
+    <link rel="preload" href="images/dual-color-column.png" as="image" fetchpriority="high">
     <link rel="preload" href="images/Deans-of-Admissions-white-horizontal.png" as="image">
     <link rel="preload" href="images/classical-building.png" as="image">
     <link rel="preload" href="images/statue.png" as="image">
-    <link rel="preload" href="images/library.png" as="image">
-    <link rel="preload" href="images/dual-color-column.png" as="image">
 
     <!-- Custom Tailwind Config -->
     <script>
@@ -179,13 +179,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 lg:mb-20">
                 <!-- Left Side - Library Image -->
                 <div class="order-2 lg:order-1" data-anime="fadeInLeft">
-                    <div class="relative inline-block w-full max-w-md lg:max-w-none lg:w-96 h-auto mx-auto library-image-container" style="opacity: 0; transition: opacity 0.3s ease;">
+                    <div class="relative inline-block w-full max-w-md lg:max-w-none lg:w-96 h-auto mx-auto library-image-container" style="opacity: 0; transition: opacity 0.5s ease;">
                         <!-- Library Image -->
-                        <img src="images/library.png" alt="University Library Interior" class="w-full h-auto object-cover library-image" loading="eager">
+                        <img src="images/library.png" alt="University Library Interior" class="w-full h-auto object-cover library-image" loading="eager" fetchpriority="high">
 
                         <!-- Dual Color Column - positioned at the right edge, anchored at bottom -->
                         <div class="absolute bottom-0 right-0" style="transform: translateX(50%) translateY(155px);">
-                            <img src="images/dual-color-column.png" alt="Decorative Column" class="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain column-image" style="display: block;" loading="eager">
+                            <img src="images/dual-color-column.png" alt="Decorative Column" class="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain column-image" style="display: block;" loading="eager" fetchpriority="high">
                         </div>
                     </div>
                 </div>
