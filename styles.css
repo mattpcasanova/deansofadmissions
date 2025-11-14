@@ -1,0 +1,753 @@
+/* Custom CSS for Deans of Admissions Website */
+
+/* Custom Fonts */
+@font-face {
+    font-family: 'the-seasons';
+    src: url('fonts/The%20Seasons%20Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'the-seasons';
+    src: url('fonts/The%20Seasons%20Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'the-seasons';
+    src: url('fonts/The%20Seasons%20Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Crimson Pro';
+    src: url('fonts/Crimson_Pro/static/CrimsonPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Crimson Pro';
+    src: url('fonts/Crimson_Pro/static/CrimsonPro-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Crimson Pro';
+    src: url('fonts/Crimson_Pro/static/CrimsonPro-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Smooth scrolling and animations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Custom gradient background */
+.gradient-bg {
+    background: radial-gradient(circle at 0% 0%, #470910, #000000);
+}
+
+/* Navigation transitions */
+.nav-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Typography */
+.hero-logo {
+    font-family: 'the-seasons', serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+.section-heading {
+    font-family: 'the-seasons', serif;
+    font-weight: 300;
+}
+
+.body-text {
+    font-family: 'Crimson Pro', sans-serif;
+    font-weight: 300;
+}
+
+.nav-link {
+    font-family: 'the-seasons', serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+/* Form styling */
+.form-overlay {
+    background-color: rgba(74, 7, 12, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* News cards */
+.news-card {
+    background-color: #4a070c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth scrolling offset for sticky header */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Remove scroll offset for main content sections */
+section#mission,
+section#about,
+section#news,
+section#contact {
+    scroll-margin-top: 0 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a070c;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #470910;
+}
+
+/* Form input focus states */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Button hover effects */
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+    .hero-logo {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+    
+    .section-heading {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .hero-logo {
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
+    
+    .section-heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .hero-logo {
+        font-size: 4rem;
+        line-height: 1.1;
+    }
+    
+    .section-heading {
+        font-size: 3rem;
+    }
+}
+
+/* Loading states and transitions */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #4a070c;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .fixed {
+        position: static !important;
+    }
+    
+    .gradient-bg {
+        background: #000000 !important;
+    }
+    
+    .form-overlay {
+        background-color: #4a070c !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .news-card {
+        border: 2px solid #ffffff;
+    }
+    
+    .form-overlay {
+        background-color: #4a070c;
+        border: 2px solid #ffffff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    /* Already optimized for dark theme */
+}
+
+/* Additional utility classes */
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+}
+
+/* Image placeholder styles */
+.placeholder-image {
+    background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* HubSpot Form Styling - Match Original Design */
+.form-holder {
+    width: 100%;
+}
+
+.form-holder .hbspt-form {
+    width: 100%;
+}
+
+.form-holder .hs-form {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-family: 'Crimson Pro', sans-serif !important;
+}
+
+.form-holder .hs-form fieldset {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.form-holder .hs-form .hs-form-field {
+    width: 100%;
+    margin-bottom: 1.5rem !important;
+}
+
+.form-holder .hs-form .hs-input {
+    width: 100% !important;
+}
+
+/* Two-column layout for 2x2 grid - IMPROVED */
+.form-holder .form-columns-2 {
+    display: grid !important;
+    grid-template-columns: 284px 284px !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    margin: 0 0 1.5rem 0 !important;
+    justify-content: space-between !important;
+}
+
+.form-holder .form-columns-2 .hs-form-field {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.form-holder .form-columns-2 .hs-form-field label {
+    text-align: left !important;
+    width: 100% !important;
+}
+
+.form-holder .form-columns-2 .hs-form-field .hs-input,
+.form-holder .form-columns-2 .hs-form-field input,
+.form-holder .form-columns-2 .hs-form-field select,
+.form-holder .form-columns-2 .hs-form-field textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Centered graduation year field - IMPROVED */
+.form-holder .form-centered {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 284px !important;
+    max-width: 284px !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+    top: calc(100% - 20px) !important;
+}
+
+.form-holder .form-centered label {
+    text-align: center !important;
+    display: block !important;
+}
+
+.form-holder .form-centered .hs-input,
+.form-holder .form-centered input,
+.form-holder .form-centered select {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Target graduation year specifically by field class */
+.form-holder .hs-high_school_graduation_year,
+.form-holder .hs_high_school_graduation_year {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 284px !important;
+    max-width: 284px !important;
+    margin: 0 auto 1.5rem auto !important;
+}
+
+.form-holder .hs-high_school_graduation_year label,
+.form-holder .hs_high_school_graduation_year label {
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.form-holder .hs-high_school_graduation_year .hs-input,
+.form-holder .hs-high_school_graduation_year select,
+.form-holder .hs_high_school_graduation_year .hs-input,
+.form-holder .hs_high_school_graduation_year select {
+    width: 284px !important;
+    max-width: 284px !important;
+    min-width: 284px !important;
+}
+
+/* Responsive adjustments - IMPROVED */
+@media (max-width: 640px) {
+    .form-holder .form-columns-2 {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+    }
+
+    .form-holder .form-centered {
+        max-width: 100% !important;
+    }
+}
+
+/* Message field spacing */
+.form-holder .hs-form-field:not(.form-centered) {
+    margin-bottom: 2rem !important;
+}
+
+/* Reserve space for error messages to prevent layout shift */
+.form-holder .hs-form-field .input {
+    margin-bottom: 20px !important;
+    position: relative !important;
+}
+
+.form-holder .hs-form-field .hs-error-msgs {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.form-holder .hs-form-field .input {
+    padding-bottom: 0 !important;
+}
+
+.form-holder .hs-error-msgs label {
+    margin: 0 !important;
+    font-size: 12px !important;
+    color: #fdf7e5 !important;
+}
+
+/* Target individual error message */
+.form-holder .hs-error-msg {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+    color: #fdf7e5 !important;
+    line-height: 1.2 !important;
+}
+
+/* Specific fix for 2x2 grid error messages */
+.form-holder .form-columns-2 .hs-form-field .hs-error-msgs {
+    position: absolute !important;
+    top: calc(100% - 16px) !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.form-holder .form-columns-2 .hs-form-field .input {
+    margin-bottom: 20px !important;
+    padding-bottom: 0 !important;
+}
+
+/* Make field wrappers position relative for absolute error positioning */
+.form-holder .hs-form-field {
+    position: relative !important;
+}
+
+/* Labels */
+#hubspot-form-container .hs-form label {
+    display: block !important;
+    color: #fdf7e5 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+    font-family: 'Crimson Pro', sans-serif !important;
+}
+
+#hubspot-form-container .hs-form label .hs-form-required {
+    color: #fdf7e5 !important;
+}
+
+/* Input fields */
+#hubspot-form-container .hs-form .hs-input {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    background-color: #fdf7e5 !important;
+    color: #4a070c !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: 'Crimson Pro', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+}
+
+#hubspot-form-container .hs-form input[type="text"],
+#hubspot-form-container .hs-form input[type="email"],
+#hubspot-form-container .hs-form input[type="tel"],
+#hubspot-form-container .hs-form select,
+#hubspot-form-container .hs-form textarea {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    background-color: #fdf7e5 !important;
+    color: #4a070c !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: 'Crimson Pro', sans-serif !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+}
+
+/* Focus states */
+#hubspot-form-container .hs-form .hs-input:focus,
+#hubspot-form-container .hs-form input[type="text"]:focus,
+#hubspot-form-container .hs-form input[type="email"]:focus,
+#hubspot-form-container .hs-form input[type="tel"]:focus,
+#hubspot-form-container .hs-form select:focus,
+#hubspot-form-container .hs-form textarea:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+}
+
+/* Textarea specific */
+#hubspot-form-container .hs-form textarea {
+    resize: vertical !important;
+    min-height: 144px !important;
+}
+
+/* Submit button container */
+#hubspot-form-container .hs-form .hs-submit {
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+}
+
+/* Submit button */
+#hubspot-form-container .hs-form .hs-button {
+    color: #fdf7e5 !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 1.125rem !important;
+    font-weight: 500 !important;
+    text-decoration: underline !important;
+    font-family: 'the-seasons', serif !important;
+    padding: 0.5rem 1rem !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+#hubspot-form-container .hs-form .hs-button:hover {
+    color: #d1d1d1 !important;
+    background: transparent !important;
+}
+
+/* Error messages - positioned absolutely to prevent layout shift */
+#hubspot-form-container .hs-form .hs-error-msgs {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+}
+
+#hubspot-form-container .hs-form .hs-error-msg {
+    color: #fdf7e5 !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+}
+
+/* Ensure form fields have relative positioning for absolute error messages */
+#hubspot-form-container .hs-form .hs-form-field {
+    position: relative !important;
+    margin-bottom: 1.5rem !important;
+}
+
+#hubspot-form-container .hs-form .hs-form-field .input {
+    position: relative !important;
+}
+
+/* Remove HubSpot default field wrapper styling */
+#hubspot-form-container .hs-form .hs-fieldtype-text,
+#hubspot-form-container .hs-form .hs-fieldtype-textarea,
+#hubspot-form-container .hs-form .hs-fieldtype-select {
+    width: 100% !important;
+}
+
+/* Fix layout shifting */
+#hubspot-form-container .hs-form .hs-input,
+#hubspot-form-container .hs-form .input {
+    height: auto !important;
+    min-height: 48px !important;
+}
+
+/* Remove any HubSpot injected styles that might cause shifting */
+#hubspot-form-container .hs-form .hs-form-field > div {
+    width: 100% !important;
+}
+
+/* Hide HubSpot success message and loading states - we handle navigation ourselves */
+#hubspot-form-container .hs-form .submitted-message,
+#hubspot-form-container .submitted-message,
+.hs-form-thankyou-text {
+    display: none !important;
+}
+
+/* Keep form visible after submission during transition */
+#hubspot-form-container .hs-form {
+    display: block !important;
+}
+
+/* Navigation color states */
+.nav-text {
+    color: #8B2635; /* dark-red default */
+    transition: color 0.3s ease;
+}
+
+.nav-text:hover {
+    opacity: 0.7;
+}
+
+/* Mission and Contact sections - cream text */
+.nav-cream .nav-text {
+    color: #F5E6D3; /* cream */
+}
+
+/* About section - dark red text */
+.nav-dark .nav-text {
+    color: #8B2635; /* dark-red */
+}
+
+/* Hero logo initial state */
+#home img {
+    transform: scale(0.001);
+    transition: transform 0.6s ease-out;
+    opacity: 1;
+}
+
+/* Prevent elements from showing before animations start */
+[data-anime] {
+    opacity: 0;
+}
+
+[data-anime].animate-fade-in {
+    opacity: 1;
+}
+
+/* Multi-Step Wizard Styles */
+.wizard-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wizard-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.wizard-step.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Ensure both steps have the same structure and sizing */
+.wizard-step .form-overlay {
+    width: 100%;
+}
+
+/* Calendar holder styling - match the form dimensions */
+.calendar-holder {
+    width: 100%;
+    background: transparent;
+    padding: 0;
+}
+
+.calendar-holder .meetings-iframe-container {
+    width: 100% !important;
+    min-height: 1000px !important;
+}
+
+.calendar-holder .meetings-iframe-container iframe {
+    width: 100% !important;
+    min-height: 1000px !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Form holder - remove excessive height */
+.form-holder {
+    width: 100%;
+}
+
+/* Ensure Step 2 takes up the same space as Step 1 */
+#step-2 {
+    min-height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calendar-holder .meetings-iframe-container,
+    .calendar-holder .meetings-iframe-container iframe {
+        min-height: 1100px !important;
+    }
+}

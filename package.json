@@ -1,0 +1,33 @@
+{
+  "name": "deans-of-admissions-website",
+  "version": "1.0.0",
+  "description": "A sophisticated, luxury single-page website for Deans of Admissions, a premier university admissions consultancy",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'No build process needed for static site'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "admissions",
+    "consultancy",
+    "university",
+    "education",
+    "website",
+    "luxury",
+    "academic"
+  ],
+  "author": "Deans of Admissions",
+  "license": "UNLICENSED",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "local"
+  },
+  "homepage": "index.html",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
