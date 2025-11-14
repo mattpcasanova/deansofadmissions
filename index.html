@@ -51,24 +51,24 @@
 </head>
 <body class="bg-black text-white overflow-x-hidden">
     <!-- Sticky Navigation Header - Desktop Only -->
-    <nav id="navbar" class="hidden md:block fixed top-0 left-0 right-0 z-50 nav-transition transform -translate-y-full">
+    <nav id="navbar" class="hidden md:block fixed top-0 left-0 right-0 z-50 nav-transition transform -translate-y-full" style="background-color: #fdf7e5;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#mission" class="nav-link">
                         <div class="w-36 h-36 flex items-center justify-center p-2">
-                            <img src="images/Deans-of-Admissions-digital-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain nav-logo">
+                            <img src="images/Deans-of-Admissions-digital-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
                         </div>
                     </a>
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <div class="block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">About</a>
-                        <a href="#news" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">News</a>
-                        <a href="#contact" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">Contact</a>
+                        <a href="#about" class="nav-link px-3 py-2 text-sm font-medium transition-colors duration-300" style="color: #4a070c;">About</a>
+                        <a href="#news" class="nav-link px-3 py-2 text-sm font-medium transition-colors duration-300" style="color: #4a070c;">News</a>
+                        <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium transition-colors duration-300" style="color: #4a070c;">Contact</a>
                     </div>
                 </div>
             </div>
@@ -90,9 +90,9 @@
     <!-- Mission Section -->
     <section id="mission" class="min-h-screen gradient-bg relative overflow-hidden">
         <!-- Classical Building - Top Right -->
-        <div class="absolute top-0 right-0 opacity-40" data-anime="fadeInRight" style="margin-top: 0;">
+        <div class="absolute top-0 right-0" data-anime="fadeInRight" style="margin-top: 0;">
             <div class="flex items-start justify-end">
-                <img src="images/classical-building.png" alt="Classical Building" class="h-40 sm:h-52 md:h-64 lg:h-72 w-auto object-contain opacity-60" loading="eager">
+                <img src="images/classical-building.png" alt="Classical Building" class="h-40 sm:h-52 md:h-64 lg:h-72 w-auto object-contain" loading="eager">
             </div>
         </div>
         
@@ -341,15 +341,15 @@
             <div class="mt-16 md:mt-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-24">
-                        <!-- Copyright -->
-                        <div class="text-white text-sm md:text-base mb-4 md:mb-0 text-center md:text-left">
-                            <p>2024 Deans of Admissions LLC. All rights reserved</p>
-                            <a href="#" class="hover:text-gray-300 transition-colors duration-300 underline">Privacy and terms</a>
+                        <!-- Logo -->
+                        <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center order-2 md:order-1">
+                            <img src="images/Deans-of-Admissions-white-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
                         </div>
 
-                        <!-- Logo -->
-                        <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center">
-                            <img src="images/Deans-of-Admissions-white-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
+                        <!-- Copyright -->
+                        <div class="text-white text-sm md:text-base mb-4 md:mb-0 text-center md:text-right order-1 md:order-2">
+                            <p>2024 Deans of Admissions LLC. All rights reserved</p>
+                            <a href="#" class="hover:text-gray-300 transition-colors duration-300 underline">Privacy and terms</a>
                         </div>
                     </div>
                 </div>

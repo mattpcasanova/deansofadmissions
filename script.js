@@ -182,46 +182,9 @@ function handleScroll() {
 }
 
 function updateNavbarColors(scrollY) {
-    const aboutSection = document.getElementById('about');
-    const newsSection = document.getElementById('news');
-    const contactSection = document.getElementById('contact');
-    
-    if (!aboutSection || !newsSection || !contactSection) return;
-    
-    const aboutTop = aboutSection.offsetTop;
-    const aboutBottom = aboutTop + aboutSection.offsetHeight;
-    const newsTop = newsSection.offsetTop;
-    const newsBottom = newsTop + newsSection.offsetHeight;
-    const contactTop = contactSection.offsetTop;
-    
-    // Get the navbar logo image
-    const navLogo = navbar.querySelector('.nav-logo');
-    
-    // Remove all color classes
-    navbar.classList.remove('nav-cream', 'nav-dark');
-    
-    if (scrollY >= aboutTop - 100 && scrollY < newsTop - 100) {
-        // About section - dark red text
-        navbar.classList.add('nav-dark');
-        // Use red/dark logo for about section
-        if (navLogo) {
-            navLogo.src = 'images/Deans-of-Admissions-digital-horizontal.png';
-        }
-    } else if (scrollY >= newsTop - 100 && scrollY < contactTop - 100) {
-        // News section - cream text  
-        navbar.classList.add('nav-cream');
-        // Use white logo for news section
-        if (navLogo) {
-            navLogo.src = 'images/Deans-of-Admissions-white-horizontal.png';
-        }
-    } else if (scrollY >= contactTop - 100) {
-        // Contact section - cream text
-        navbar.classList.add('nav-cream');
-        // Use white logo for contact section
-        if (navLogo) {
-            navLogo.src = 'images/Deans-of-Admissions-white-horizontal.png';
-        }
-    }
+    // Navbar now always uses dark red text and logo with cream background
+    // No color changes needed
+    return;
 }
 
 function showNavbar() {
@@ -544,6 +507,7 @@ initializeHashManagement();
 function initializeHeroLogo() {
     const heroLogo = document.querySelector('#home img');
     let hasScrolled = false;
+    let autoScaled = false;
 
     if (!heroLogo) return;
 
@@ -558,11 +522,20 @@ function initializeHeroLogo() {
         heroLogo.style.transform = 'scale(0.5)';
     });
 
+    // Auto-animate to full size after 3 seconds if user hasn't scrolled
+    setTimeout(() => {
+        if (!hasScrolled && !autoScaled) {
+            autoScaled = true;
+            heroLogo.style.transform = 'scale(1)';
+        }
+    }, 3000);
+
     function handleLogoScroll() {
         if (!hasScrolled && window.scrollY > 0) {
             hasScrolled = true;
+            autoScaled = true; // Mark as scaled
             heroLogo.style.transform = 'scale(1)';
-        } else if (hasScrolled && window.scrollY === 0) {
+        } else if (hasScrolled && window.scrollY === 0 && !autoScaled) {
             hasScrolled = false;
             heroLogo.style.transform = 'scale(0.5)';
         }
