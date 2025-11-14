@@ -21,9 +21,56 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeScrollEffects();
     initializeHeroLogo();
+    initializeImageLoading();
     // Set initial navbar logo based on scroll position
     updateNavbarColors(window.scrollY);
 });
+
+// Ensure library and column images load together
+function initializeImageLoading() {
+    const libraryImage = document.querySelector('.library-image');
+    const columnImage = document.querySelector('.column-image');
+    const container = document.querySelector('.library-image-container');
+
+    if (!libraryImage || !columnImage || !container) return;
+
+    let libraryLoaded = false;
+    let columnLoaded = false;
+
+    function checkBothLoaded() {
+        if (libraryLoaded && columnLoaded) {
+            // Both images loaded, show them together
+            container.style.opacity = '1';
+        }
+    }
+
+    // Check if images are already cached/loaded
+    if (libraryImage.complete && libraryImage.naturalHeight !== 0) {
+        libraryLoaded = true;
+    } else {
+        libraryImage.addEventListener('load', () => {
+            libraryLoaded = true;
+            checkBothLoaded();
+        });
+    }
+
+    if (columnImage.complete && columnImage.naturalHeight !== 0) {
+        columnLoaded = true;
+    } else {
+        columnImage.addEventListener('load', () => {
+            columnLoaded = true;
+            checkBothLoaded();
+        });
+    }
+
+    // Check immediately in case both are already loaded
+    checkBothLoaded();
+
+    // Fallback: show after 3 seconds even if not fully loaded
+    setTimeout(() => {
+        container.style.opacity = '1';
+    }, 3000);
+}
 
 // Navigation Functions
 function initializeNavigation() {

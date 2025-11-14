@@ -14,6 +14,13 @@
     <link rel="preload" href="fonts/The%20Seasons%20Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
     <link rel="preload" href="fonts/Crimson_Pro/static/CrimsonPro-Light.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
+    <!-- Preload critical images -->
+    <link rel="preload" href="images/Deans-of-Admissions-white-horizontal.png" as="image">
+    <link rel="preload" href="images/classical-building.png" as="image">
+    <link rel="preload" href="images/statue.png" as="image">
+    <link rel="preload" href="images/library.png" as="image">
+    <link rel="preload" href="images/dual-color-column.png" as="image">
+
     <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
@@ -74,7 +81,7 @@
             <!-- Logo Emblem -->
             <div class="mb-8" data-anime="fadeInUp">
                 <div class="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] mx-auto mb-6 flex items-center justify-center">
-                    <img src="images/Deans-of-Admissions-white-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
+                    <img src="images/Deans-of-Admissions-white-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain" loading="eager">
                 </div>
             </div>
         </div>
@@ -85,7 +92,7 @@
         <!-- Classical Building - Top Right -->
         <div class="absolute top-0 right-0 opacity-40" data-anime="fadeInRight" style="margin-top: 0;">
             <div class="flex items-start justify-end">
-                <img src="images/classical-building.png" alt="Classical Building" class="h-40 sm:h-52 md:h-64 lg:h-72 w-auto object-contain opacity-60">
+                <img src="images/classical-building.png" alt="Classical Building" class="h-40 sm:h-52 md:h-64 lg:h-72 w-auto object-contain opacity-60" loading="eager">
             </div>
         </div>
         
@@ -122,7 +129,7 @@
         <!-- Classical Statue - Bottom Left, bleeding into next section -->
         <div class="absolute bottom-0 left-0" style="transform: translateY(68px); z-index: 200;" data-anime="fadeInLeft">
             <div class="pl-4 md:pl-2 lg:pl-8">
-                <img src="images/statue.png" alt="Classical Statue" class="h-[300px] md:h-[600px] w-auto object-contain">
+                <img src="images/statue.png" alt="Classical Statue" class="h-[300px] md:h-[600px] w-auto object-contain" loading="eager">
             </div>
         </div>
     </section>
@@ -172,13 +179,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 lg:mb-20">
                 <!-- Left Side - Library Image -->
                 <div class="order-2 lg:order-1" data-anime="fadeInLeft">
-                    <div class="relative inline-block w-full max-w-md lg:max-w-none lg:w-96 h-auto mx-auto">
+                    <div class="relative inline-block w-full max-w-md lg:max-w-none lg:w-96 h-auto mx-auto library-image-container" style="opacity: 0; transition: opacity 0.3s ease;">
                         <!-- Library Image -->
-                        <img src="images/library.png" alt="University Library Interior" class="w-full h-auto object-cover">
+                        <img src="images/library.png" alt="University Library Interior" class="w-full h-auto object-cover library-image" loading="eager">
 
                         <!-- Dual Color Column - positioned at the right edge, anchored at bottom -->
                         <div class="absolute bottom-0 right-0" style="transform: translateX(50%) translateY(155px);">
-                            <img src="images/dual-color-column.png" alt="Decorative Column" class="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain" style="display: block;">
+                            <img src="images/dual-color-column.png" alt="Decorative Column" class="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain column-image" style="display: block;" loading="eager">
                         </div>
                     </div>
                 </div>
@@ -216,7 +223,7 @@
                 <!-- Right Side - Founder Video -->
                 <div class="order-1 lg:order-2 pl-0 lg:pl-8" data-anime="fadeInRight">
                     <div class="overflow-hidden h-64 sm:h-80 lg:h-96 mx-auto max-w-md lg:max-w-none">
-                        <video class="w-full h-full object-cover" controls>
+                        <video class="w-full h-full object-cover" controls preload="metadata" poster="images/video-poster.jpg">
                             <source src="videos/drusilla-blackman.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>

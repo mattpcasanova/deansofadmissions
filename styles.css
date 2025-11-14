@@ -432,6 +432,7 @@ select:focus {
     background-color: #fdf7e5 !important;
     color: #4a070c !important;
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     font-family: 'Crimson Pro', sans-serif !important;
     font-size: 14px !important;
@@ -478,6 +479,7 @@ select:focus {
         background-color: #fdf7e5 !important;
         color: #4a070c !important;
         border: none !important;
+        border-radius: 0 !important;
         box-shadow: none !important;
         font-family: 'Crimson Pro', sans-serif !important;
         font-size: 14px !important;
@@ -575,6 +577,7 @@ select:focus {
     background-color: #fdf7e5 !important;
     color: #4a070c !important;
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     font-family: 'Crimson Pro', sans-serif !important;
     font-size: 14px !important;
@@ -596,6 +599,7 @@ select:focus {
     background-color: #fdf7e5 !important;
     color: #4a070c !important;
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     font-family: 'Crimson Pro', sans-serif !important;
     font-size: 14px !important;
