@@ -506,7 +506,7 @@ initializeHashManagement();
 // Hero Logo Animation
 function initializeHeroLogo() {
     const heroLogo = document.querySelector('#home img');
-    let hasScrolled = false;
+    let hasInteracted = false;
     let autoScaled = false;
 
     if (!heroLogo) return;
@@ -516,32 +516,50 @@ function initializeHeroLogo() {
     heroLogo.style.transition = 'transform 0.6s ease-out';
     heroLogo.style.opacity = '1';
 
-    // Immediately animate to 50% scale on page load
+    // Immediately animate to 60% scale on page load
     // Use requestAnimationFrame to ensure DOM is ready
     requestAnimationFrame(() => {
-        heroLogo.style.transform = 'scale(0.5)';
+        heroLogo.style.transform = 'scale(0.6)';
     });
 
-    // Auto-animate to full size after 3 seconds if user hasn't scrolled
-    setTimeout(() => {
-        if (!hasScrolled && !autoScaled) {
+    function scaleToFull() {
+        if (!autoScaled) {
             autoScaled = true;
+            // Change transition to slower for final scale
+            heroLogo.style.transition = 'transform 2s ease-out';
             heroLogo.style.transform = 'scale(1)';
         }
-    }, 3000);
+    }
+
+    // Auto-animate to full size after 1 second if user hasn't interacted
+    setTimeout(() => {
+        if (!hasInteracted && !autoScaled) {
+            scaleToFull();
+        }
+    }, 1000);
 
     function handleLogoScroll() {
-        if (!hasScrolled && window.scrollY > 0) {
-            hasScrolled = true;
-            autoScaled = true; // Mark as scaled
-            heroLogo.style.transform = 'scale(1)';
-        } else if (hasScrolled && window.scrollY === 0 && !autoScaled) {
-            hasScrolled = false;
-            heroLogo.style.transform = 'scale(0.5)';
+        if (!hasInteracted && window.scrollY > 0) {
+            hasInteracted = true;
+            scaleToFull();
+        } else if (hasInteracted && window.scrollY === 0 && !autoScaled) {
+            hasInteracted = false;
+            heroLogo.style.transition = 'transform 0.6s ease-out';
+            heroLogo.style.transform = 'scale(0.6)';
+        }
+    }
+
+    function handleMouseMove() {
+        if (!hasInteracted && !autoScaled) {
+            hasInteracted = true;
+            scaleToFull();
+            // Remove listener after first interaction
+            document.removeEventListener('mousemove', handleMouseMove);
         }
     }
 
     window.addEventListener('scroll', handleLogoScroll);
+    document.addEventListener('mousemove', handleMouseMove);
 }
 
 // Multi-Step Wizard Flow
