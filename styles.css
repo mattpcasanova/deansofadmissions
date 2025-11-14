@@ -6,7 +6,7 @@
     src: url('fonts/The%20Seasons%20Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
 }
 
 @font-face {
@@ -14,7 +14,7 @@
     src: url('fonts/The%20Seasons%20Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
 }
 
 @font-face {
@@ -22,7 +22,7 @@
     src: url('fonts/The%20Seasons%20Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
 }
 
 @font-face {
@@ -428,6 +428,25 @@ select:focus {
     width: 284px !important;
     max-width: 284px !important;
     min-width: 284px !important;
+    padding: 0.75rem 1rem !important;
+    background-color: #fdf7e5 !important;
+    color: #4a070c !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: 'Crimson Pro', sans-serif !important;
+    font-size: 14px !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+.form-holder .hs-high_school_graduation_year select,
+.form-holder .hs_high_school_graduation_year select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a070c' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 12px !important;
+    padding-right: 2.5rem !important;
 }
 
 /* Responsive adjustments - IMPROVED */
@@ -439,6 +458,41 @@ select:focus {
 
     .form-holder .form-centered {
         max-width: 100% !important;
+    }
+
+    /* Graduation year field responsive */
+    .form-holder .hs-high_school_graduation_year,
+    .form-holder .hs_high_school_graduation_year {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .form-holder .hs-high_school_graduation_year .hs-input,
+    .form-holder .hs-high_school_graduation_year select,
+    .form-holder .hs_high_school_graduation_year .hs-input,
+    .form-holder .hs_high_school_graduation_year select {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 0.75rem 1rem !important;
+        background-color: #fdf7e5 !important;
+        color: #4a070c !important;
+        border: none !important;
+        box-shadow: none !important;
+        font-family: 'Crimson Pro', sans-serif !important;
+        font-size: 14px !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+    }
+
+    .form-holder .hs-high_school_graduation_year select,
+    .form-holder .hs_high_school_graduation_year select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a070c' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 1rem center !important;
+        background-size: 12px !important;
+        padding-right: 2.5rem !important;
     }
 }
 
@@ -527,6 +581,9 @@ select:focus {
     line-height: 1.5 !important;
     box-sizing: border-box !important;
     transition: all 0.3s ease !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
 }
 
 #hubspot-form-container .hs-form input[type="text"],
@@ -543,6 +600,18 @@ select:focus {
     font-family: 'Crimson Pro', sans-serif !important;
     font-size: 14px !important;
     box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+/* Specific styling for select/dropdown fields */
+#hubspot-form-container .hs-form select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a070c' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 12px !important;
+    padding-right: 2.5rem !important;
 }
 
 /* Focus states */

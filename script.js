@@ -15,18 +15,7 @@ let isNavbarVisible = false;
 
 // Initialize the website
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for fonts to load before showing content
-    if (document.fonts) {
-        document.fonts.ready.then(function() {
-            initializeAfterFontsLoad();
-        });
-    } else {
-        // Fallback for browsers that don't support font loading API
-        initializeAfterFontsLoad();
-    }
-});
-
-function initializeAfterFontsLoad() {
+    // Initialize immediately, don't wait for fonts
     initializeNavigation();
     initializeForm();
     initializeAnimations();
@@ -34,7 +23,7 @@ function initializeAfterFontsLoad() {
     initializeHeroLogo();
     // Set initial navbar logo based on scroll position
     updateNavbarColors(window.scrollY);
-}
+});
 
 // Navigation Functions
 function initializeNavigation() {
@@ -482,10 +471,11 @@ function initializeHeroLogo() {
     heroLogo.style.transition = 'transform 0.6s ease-out';
     heroLogo.style.opacity = '1';
 
-    // Automatically animate to 50% scale on page load
-    setTimeout(() => {
+    // Immediately animate to 50% scale on page load
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
         heroLogo.style.transform = 'scale(0.5)';
-    }, 50); // Reduced delay for smoother start
+    });
 
     function handleLogoScroll() {
         if (!hasScrolled && window.scrollY > 0) {

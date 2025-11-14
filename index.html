@@ -10,9 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Preload critical fonts -->
-    <link rel="preload" href="fonts/The%20Seasons%20Light.otf" as="font" type="font/otf" crossorigin>
-    <link rel="preload" href="fonts/The%20Seasons%20Regular.otf" as="font" type="font/otf" crossorigin>
-    <link rel="preload" href="fonts/Crimson_Pro/static/CrimsonPro-Light.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/The%20Seasons%20Light.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="fonts/The%20Seasons%20Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Crimson_Pro/static/CrimsonPro-Light.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
     <!-- Custom Tailwind Config -->
     <script>
@@ -127,20 +127,12 @@
         </div>
     </section>
 
-    <!-- Mobile Hamburger Menu (for About, News, Contact sections) - Sticky on Left -->
-    <div id="mobile-section-menu" class="fixed top-4 left-4 md:hidden z-[1000]" style="display: none;">
-        <button id="section-menu-button" class="bg-cream rounded-lg p-3 shadow-xl focus:outline-none flex flex-col items-center" aria-label="Navigation Menu">
-            <svg class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #4a070c;">
+    <!-- Mobile Hamburger Menu (for About, News, Contact sections) - Sticky on Right -->
+    <div id="mobile-section-menu" class="fixed top-4 right-4 md:hidden z-[1000]" style="display: none;">
+        <button id="section-menu-button" class="bg-cream rounded-lg p-3 shadow-xl focus:outline-none" aria-label="Navigation Menu">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #4a070c;">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <div class="w-16 h-16 flex items-center justify-center mb-2">
-                <img src="images/Deans-of-Admissions-digital-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
-            </div>
-            <div class="flex flex-col items-center space-y-1 text-xs" style="color: #4a070c;">
-                <span class="font-medium">About</span>
-                <span class="font-medium">News</span>
-                <span class="font-medium">Contact</span>
-            </div>
         </button>
     </div>
 
