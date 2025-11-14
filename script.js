@@ -2,15 +2,15 @@
 
 // DOM Elements
 const navbar = document.getElementById('navbar');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const missionMenuButton = document.getElementById('mission-menu-button');
-const missionMobileMenu = document.getElementById('mission-mobile-menu');
+const sectionMenuButton = document.getElementById('section-menu-button');
+const sectionMobileMenu = document.getElementById('mobile-section-menu');
+const sectionMobileMenuPanel = document.getElementById('section-mobile-menu-panel');
+const sectionMobileMenuOverlay = document.getElementById('section-mobile-menu-overlay');
+const sectionMenuClose = document.getElementById('section-menu-close');
 const contactForm = document.getElementById('contact-form');
 
 // State
-let isMobileMenuOpen = false;
-let isMissionMenuOpen = false;
+let isSectionMenuOpen = false;
 let isNavbarVisible = false;
 
 // Initialize the website
@@ -46,33 +46,29 @@ function initializeNavigation() {
         link.addEventListener('click', handleNavigationClick);
     });
 
-    // Mobile menu button
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    // Section mobile menu button
+    if (sectionMenuButton) {
+        sectionMenuButton.addEventListener('click', toggleSectionMenu);
     }
 
-    // Mission section mobile menu button
-    if (missionMenuButton) {
-        missionMenuButton.addEventListener('click', toggleMissionMenu);
+    // Close button for section menu
+    if (sectionMenuClose) {
+        sectionMenuClose.addEventListener('click', closeSectionMenu);
     }
 
-    // Mission section navigation links - close menu on click
-    const missionNavLinks = document.querySelectorAll('.mission-nav-link');
-    missionNavLinks.forEach(link => {
+    // Overlay click closes menu
+    if (sectionMobileMenuOverlay) {
+        sectionMobileMenuOverlay.addEventListener('click', closeSectionMenu);
+    }
+
+    // Section menu navigation links - close menu on click
+    const sectionNavLinks = document.querySelectorAll('.section-menu-nav-link');
+    sectionNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            closeMissionMenu();
+            closeSectionMenu();
         });
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (isMobileMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-            closeMobileMenu();
-        }
-        if (isMissionMenuOpen && missionMobileMenu && !missionMobileMenu.contains(e.target) && !missionMenuButton.contains(e.target)) {
-            closeMissionMenu();
-        }
-    });
 
     // Handle window resize
     window.addEventListener('resize', handleWindowResize);
@@ -84,22 +80,33 @@ function handleScroll() {
     const missionSection = document.getElementById('mission');
     const aboutSection = document.getElementById('about');
 
-    // Disable sticky navbar on mobile (below 768px)
-    if (window.innerWidth < 768) {
-        return;
-    }
-
     if (heroSection && missionSection && aboutSection) {
         const heroHeight = heroSection.offsetHeight;
         const missionHeight = missionSection.offsetHeight;
         const aboutTop = aboutSection.offsetTop;
+        const missionBottom = missionSection.offsetTop + missionSection.offsetHeight;
 
-        // Show navbar starting from about section
-        if (scrollY >= aboutTop - 100) {
-            showNavbar();
-            updateNavbarColors(scrollY);
-        } else {
-            hideNavbar();
+        // Show mobile section menu when past mission section on mobile
+        if (window.innerWidth < 768 && sectionMobileMenu) {
+            if (scrollY >= missionBottom - 100) {
+                sectionMobileMenu.style.display = 'block';
+            } else {
+                sectionMobileMenu.style.display = 'none';
+                closeSectionMenu(); // Close menu if user scrolls back up
+            }
+        } else if (sectionMobileMenu) {
+            sectionMobileMenu.style.display = 'none';
+        }
+
+        // Desktop sticky navbar (disable on mobile)
+        if (window.innerWidth >= 768) {
+            // Show navbar starting from about section
+            if (scrollY >= aboutTop - 100) {
+                showNavbar();
+                updateNavbarColors(scrollY);
+            } else {
+                hideNavbar();
+            }
         }
     }
 }
@@ -188,61 +195,49 @@ function smoothScroll(target) {
     }
 }
 
-function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen;
-    if (isMobileMenuOpen) {
-        openMobileMenu();
-    } else {
-        closeMobileMenu();
-    }
-}
-
-function openMobileMenu() {
-    mobileMenu.classList.remove('translate-y-full');
-    mobileMenu.classList.add('translate-y-0');
-    mobileMenuButton.setAttribute('aria-expanded', 'true');
-}
-
-function closeMobileMenu() {
-    isMobileMenuOpen = false;
-    mobileMenu.classList.add('translate-y-full');
-    mobileMenu.classList.remove('translate-y-0');
-    mobileMenuButton.setAttribute('aria-expanded', 'false');
-}
-
 function handleWindowResize() {
-    // Close mobile menu on desktop
-    if (window.innerWidth >= 768 && isMobileMenuOpen) {
-        closeMobileMenu();
-    }
-    if (window.innerWidth >= 768 && isMissionMenuOpen) {
-        closeMissionMenu();
+    // Close section menu on desktop
+    if (window.innerWidth >= 768) {
+        if (isSectionMenuOpen) {
+            closeSectionMenu();
+        }
+        if (sectionMobileMenu) {
+            sectionMobileMenu.style.display = 'none';
+        }
     }
 }
 
-function toggleMissionMenu() {
-    isMissionMenuOpen = !isMissionMenuOpen;
-    if (isMissionMenuOpen) {
-        openMissionMenu();
+function toggleSectionMenu() {
+    isSectionMenuOpen = !isSectionMenuOpen;
+    if (isSectionMenuOpen) {
+        openSectionMenu();
     } else {
-        closeMissionMenu();
+        closeSectionMenu();
     }
 }
 
-function openMissionMenu() {
-    if (missionMobileMenu) {
-        missionMobileMenu.classList.remove('opacity-0', 'invisible');
-        missionMobileMenu.classList.add('opacity-100', 'visible');
-        missionMenuButton.setAttribute('aria-expanded', 'true');
+function openSectionMenu() {
+    if (sectionMobileMenuPanel && sectionMobileMenuOverlay) {
+        sectionMobileMenuPanel.classList.remove('-translate-x-full');
+        sectionMobileMenuPanel.classList.add('translate-x-0');
+        sectionMobileMenuOverlay.classList.remove('opacity-0', 'invisible');
+        sectionMobileMenuOverlay.classList.add('opacity-100', 'visible');
+        sectionMenuButton.setAttribute('aria-expanded', 'true');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = 'hidden';
     }
 }
 
-function closeMissionMenu() {
-    isMissionMenuOpen = false;
-    if (missionMobileMenu) {
-        missionMobileMenu.classList.add('opacity-0', 'invisible');
-        missionMobileMenu.classList.remove('opacity-100', 'visible');
-        missionMenuButton.setAttribute('aria-expanded', 'false');
+function closeSectionMenu() {
+    isSectionMenuOpen = false;
+    if (sectionMobileMenuPanel && sectionMobileMenuOverlay) {
+        sectionMobileMenuPanel.classList.add('-translate-x-full');
+        sectionMobileMenuPanel.classList.remove('translate-x-0');
+        sectionMobileMenuOverlay.classList.add('opacity-0', 'invisible');
+        sectionMobileMenuOverlay.classList.remove('opacity-100', 'visible');
+        sectionMenuButton.setAttribute('aria-expanded', 'false');
+        // Re-enable body scroll
+        document.body.style.overflow = '';
     }
 }
 
@@ -651,8 +646,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Export functions for potential external use
 window.DeansOfAdmissions = {
     smoothScroll,
-    toggleMobileMenu,
-    closeMobileMenu,
     showSuccessMessage
 };
 

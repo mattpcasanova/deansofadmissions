@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-black text-white overflow-x-hidden">
-    <!-- Sticky Navigation Header -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-transition transform -translate-y-full">
+    <!-- Sticky Navigation Header - Desktop Only -->
+    <nav id="navbar" class="hidden md:block fixed top-0 left-0 right-0 z-50 nav-transition transform -translate-y-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -57,31 +57,13 @@
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:block">
+                <div class="block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#about" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">About</a>
                         <a href="#news" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">News</a>
                         <a href="#contact" class="nav-link nav-text px-3 py-2 text-sm font-medium transition-colors duration-300">Contact</a>
                     </div>
                 </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" type="button" class="nav-text focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="md:hidden border-t border-gray-200 transform translate-y-full transition-transform duration-300">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="nav-link nav-text block px-3 py-2 text-base font-medium">About</a>
-                <a href="#news" class="nav-link nav-text block px-3 py-2 text-base font-medium">News</a>
-                <a href="#contact" class="nav-link nav-text block px-3 py-2 text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -126,29 +108,13 @@
                     </div>
                 </div>
 
-                <!-- Navigation Links - Desktop -->
-                <div class="hidden md:flex justify-center space-x-3 sm:space-x-4 text-white text-sm sm:text-base">
+                <!-- Navigation Links - Always visible on Mission section -->
+                <div class="flex justify-center space-x-3 sm:space-x-4 text-white text-sm sm:text-base">
                     <a href="#about" class="nav-link hover:text-gray-300 transition-colors duration-300 underline">About</a>
                     <span class="text-gray-400">•</span>
                     <a href="#news" class="nav-link hover:text-gray-300 transition-colors duration-300 underline">News</a>
                     <span class="text-gray-400">•</span>
                     <a href="#contact" class="nav-link hover:text-gray-300 transition-colors duration-300 underline">Contact</a>
-                </div>
-
-                <!-- Hamburger Menu - Mobile -->
-                <div class="md:hidden flex justify-center">
-                    <button id="mission-menu-button" class="text-white focus:outline-none" aria-label="Navigation Menu">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Dropdown -->
-                <div id="mission-mobile-menu" class="md:hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 rounded-lg shadow-lg py-3 px-6 space-y-3 opacity-0 invisible transition-all duration-300" style="z-index: 300; background-color: rgba(74, 7, 12, 0.95);">
-                    <a href="#about" class="mission-nav-link block text-white text-base hover:text-gray-300 transition-colors duration-300 underline">About</a>
-                    <a href="#news" class="mission-nav-link block text-white text-base hover:text-gray-300 transition-colors duration-300 underline">News</a>
-                    <a href="#contact" class="mission-nav-link block text-white text-base hover:text-gray-300 transition-colors duration-300 underline">Contact</a>
                 </div>
             </div>
         </div>
@@ -160,6 +126,52 @@
             </div>
         </div>
     </section>
+
+    <!-- Mobile Hamburger Menu (for About, News, Contact sections) - Sticky on Left -->
+    <div id="mobile-section-menu" class="fixed top-4 left-4 md:hidden z-[1000]" style="display: none;">
+        <button id="section-menu-button" class="bg-cream rounded-lg p-3 shadow-xl focus:outline-none flex flex-col items-center" aria-label="Navigation Menu">
+            <svg class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #4a070c;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <div class="w-16 h-16 flex items-center justify-center mb-2">
+                <img src="images/Deans-of-Admissions-digital-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
+            </div>
+            <div class="flex flex-col items-center space-y-1 text-xs" style="color: #4a070c;">
+                <span class="font-medium">About</span>
+                <span class="font-medium">News</span>
+                <span class="font-medium">Contact</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="section-mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[999] opacity-0 invisible transition-all duration-300 md:hidden"></div>
+
+    <!-- Mobile Menu Panel - Slides from Left -->
+    <div id="section-mobile-menu-panel" class="fixed top-0 left-0 h-full w-64 bg-cream z-[1000] transform -translate-x-full transition-transform duration-300 md:hidden shadow-xl">
+        <div class="flex flex-col h-full p-6">
+            <!-- Close Button -->
+            <button id="section-menu-close" class="self-end mb-6" style="color: #4a070c;" aria-label="Close Menu">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="#mission" class="section-menu-nav-link mb-8">
+                <div class="w-40 h-40 mx-auto flex items-center justify-center">
+                    <img src="images/Deans-of-Admissions-digital-horizontal.png" alt="Deans of Admissions Logo" class="w-full h-full object-contain">
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-col space-y-6 text-center">
+                <a href="#about" class="section-menu-nav-link nav-link text-lg font-medium hover:opacity-70 transition-opacity duration-300 underline" style="color: #4a070c;">About</a>
+                <a href="#news" class="section-menu-nav-link nav-link text-lg font-medium hover:opacity-70 transition-opacity duration-300 underline" style="color: #4a070c;">News</a>
+                <a href="#contact" class="section-menu-nav-link nav-link text-lg font-medium hover:opacity-70 transition-opacity duration-300 underline" style="color: #4a070c;">Contact</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-cream text-black" style="position: relative; z-index: 1;">
