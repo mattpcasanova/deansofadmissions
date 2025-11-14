@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNavbarColors(window.scrollY);
 });
 
-// Ensure library and column images load together
+// Ensure library and column images load together as one unit
 function initializeImageLoading() {
     const libraryImage = document.querySelector('.library-image');
     const columnImage = document.querySelector('.column-image');
@@ -36,18 +36,37 @@ function initializeImageLoading() {
 
     let libraryLoaded = false;
     let columnLoaded = false;
+    let bothLoaded = false;
 
     function checkBothLoaded() {
-        if (libraryLoaded && columnLoaded) {
-            // Both images loaded, show them together
-            container.style.opacity = '1';
+        if (libraryLoaded && columnLoaded && !bothLoaded) {
+            bothLoaded = true;
+            // Both images loaded, show them together with a smooth fade
+            requestAnimationFrame(() => {
+                container.style.opacity = '1';
+            });
         }
     }
+
+    // Preload both images to ensure they're ready
+    const preloadLibrary = new Image();
+    const preloadColumn = new Image();
+
+    preloadLibrary.onload = () => {
+        libraryLoaded = true;
+        checkBothLoaded();
+    };
+
+    preloadColumn.onload = () => {
+        columnLoaded = true;
+        checkBothLoaded();
+    };
 
     // Check if images are already cached/loaded
     if (libraryImage.complete && libraryImage.naturalHeight !== 0) {
         libraryLoaded = true;
     } else {
+        preloadLibrary.src = libraryImage.src;
         libraryImage.addEventListener('load', () => {
             libraryLoaded = true;
             checkBothLoaded();
@@ -57,19 +76,34 @@ function initializeImageLoading() {
     if (columnImage.complete && columnImage.naturalHeight !== 0) {
         columnLoaded = true;
     } else {
+        preloadColumn.src = columnImage.src;
         columnImage.addEventListener('load', () => {
             columnLoaded = true;
             checkBothLoaded();
         });
     }
 
+    // Handle errors - still show after timeout
+    preloadLibrary.onerror = () => {
+        libraryLoaded = true;
+        checkBothLoaded();
+    };
+
+    preloadColumn.onerror = () => {
+        columnLoaded = true;
+        checkBothLoaded();
+    };
+
     // Check immediately in case both are already loaded
     checkBothLoaded();
 
-    // Fallback: show after 3 seconds even if not fully loaded
+    // Fallback: show after 2 seconds even if not fully loaded
     setTimeout(() => {
-        container.style.opacity = '1';
-    }, 3000);
+        if (!bothLoaded) {
+            container.style.opacity = '1';
+            bothLoaded = true;
+        }
+    }, 2000);
 }
 
 // Navigation Functions
