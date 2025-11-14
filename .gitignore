@@ -78,4 +78,4 @@ server/
 *.rar
 
 # Media
-videos/
+# videos are tracked via Git LFS
